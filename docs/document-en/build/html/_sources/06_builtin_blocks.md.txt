@@ -295,7 +295,7 @@ The Snips training data is `_training_data.json` in the application directory. B
 (chatgpt_understander)=
 ## ChatGPT Understander (Language Understanding Block using Snips)
 
-(`dialbb.builtin_blocks.understanding_with_chatgpt.chatgpt_understander.Understander`）
+(`dialbb.builtin_blocks.understanding_with_chatgpt.chatgpt_understander.Understander`)
 
 Determines the user utterance type (also called intent) and extracts the slots using OpenAI's ChatGPT.
 
@@ -374,12 +374,12 @@ At runtime, input utterance is added to the prompt to make ChatGPT perform langu
   
   A prompt template is a template of prompts for making ChatGPT language understanding, and it can contain the following variables starting with `@`.
   
-  - `@types` 発話タイプの種類を列挙したものです．
-  - `@slot_definitions` スロットの種類を列挙したものです．
-  - `@examples` 発話例と，タイプ，スロットの正解を書いたいわゆるfew shot exampleです．
-  - `@input` 入力発話です．
+  - `@types` The list of utterance types.
+  - `@slot_definitions` The list of slot definitions.
+  - `@examples` So-called few shot examples each of which has an utterances example, its utterance type, and its slots. 
+  - `@input` input utterance.
   
-  これらの変数には，実行時に値が代入されます．
+  Values are assigned to these variables at runtime.
 
 
 (chatgpt_nlu_knowledge)=
@@ -865,7 +865,7 @@ Note that the contextual information is reverted, but not if you have changed th
 (chatgpt_dialogue)=
 ## ChatGPT Dialogue (ChatGPT-based Dialogue Block)
 
-(Changed in ver0.7）
+(Changed in ver0.7)
 
 (`dialbb.builtin_blocks.chatgpt.chatgpt.ChatGPT` 
 
