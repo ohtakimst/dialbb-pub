@@ -36,6 +36,7 @@ jobs:
       run: |
         cd $DOC_DIR
         make html
+        ls -l
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
