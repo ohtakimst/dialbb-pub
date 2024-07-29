@@ -1,16 +1,12 @@
 # .github/workflows/docs-build-deployments.yml
 name: Deploy Sphinx Docs to GitHub Pages
 
-env:
-  DOC_DIR: docs/document-ja
-
 on:
   push:
     branches:
       - main
     paths:
-      # - "$DOC_DIR/source/**"
-      - "docs/document-ja/source/**"
+      - "docs/**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,12 +27,21 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r $DOC_DIR/requirements.txt
 
     - name: Build Sphinx documentation
       run: |
-        cd $DOC_DIR
-        make html
+        if git diff --name-only origin/main | grep '^docs/document-ja/'; then
+          echo "Build Japanese."
+          cd docs/document-ja
+          pip install -r requirements.txt
+          make html
+        fi
+        if git diff --name-only origin/main | grep '^docs/document-en/'; then
+          echo "Build English."
+          cd docs/document-en
+          pip install -r requirements.txt
+          make html
+        fi
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
