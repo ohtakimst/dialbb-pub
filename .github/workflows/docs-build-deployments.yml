@@ -32,6 +32,9 @@ jobs:
       id: check_changes
       run: |
         git fetch origin main
+        git branch -r  # リモートブランチのリストを表示
+        git status     # 現在のブランチを表示
+        echo "Changes in src/:"
         git diff --name-only origin/main
 
     - name: Build Sphinx documentation
