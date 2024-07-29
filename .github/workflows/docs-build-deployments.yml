@@ -30,6 +30,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
 
+    - name: Fetch all branches
+      run: |
+        git fetch --all
+
     - name: Check for changes in the src/ folder
       id: check_changes
       run: |
