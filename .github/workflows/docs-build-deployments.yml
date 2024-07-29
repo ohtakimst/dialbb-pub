@@ -18,6 +18,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+          fetch-depth: 0  # 全履歴をフェッチする
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -34,7 +36,7 @@ jobs:
         git fetch origin main
         git branch -r  # リモートブランチのリストを表示
         git status     # 現在のブランチを表示
-        echo "Changes in src/:"
+        echo "Comparing with origin/main"
         git diff --name-only origin/main
 
     - name: Build Sphinx documentation
