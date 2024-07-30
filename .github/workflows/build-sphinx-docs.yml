@@ -53,8 +53,8 @@ jobs:
         # cd docs/_build/html
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-        git init
+        # git init
         git status
         git add .
         git commit -m "Commit the sphinx documentation build html"
-        git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" main:$BRANCH
+        git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" origin $BRANCH
