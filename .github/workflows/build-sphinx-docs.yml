@@ -40,7 +40,7 @@ jobs:
         cd docs/document-ja/
         make html
         echo "Build English."
-        cd docs/document-en/
+        cd ../../docs/document-en/
         make html
 
     - name: Deploy documentation to branch
