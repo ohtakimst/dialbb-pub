@@ -36,6 +36,20 @@ jobs:
         echo "Comparing with previous commit"
         CHANGES=$(git diff --name-only HEAD~)
         echo "CHANGES: $CHANGES"
+        if echo "$CHANGES" | grep '^docs/document-ja/source/'; then
+          echo "Files of Japanese."
+          echo "CHANGES_JP=true" >> $GITHUB_ENV
+        else
+          echo "CHANGES_JP=false" >> $GITHUB_ENV
+        fi
+
+    - name: Run if src/ folder has changes
+      if: env.CHANGES_JP == 'true'
+      run: |
+        echo "Build Japanese."
+        cd docs/document-ja
+        pip install -r requirements.txt
+        make html
 
     - name: Build Sphinx documentation
       run: |
