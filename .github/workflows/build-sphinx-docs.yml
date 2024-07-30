@@ -1,4 +1,4 @@
-# .github/workflows/building-sphinx-docs.yml
+# .github/workflows/build-sphinx-docs.yml
 name: Build Sphinx Docs
 
 env:
