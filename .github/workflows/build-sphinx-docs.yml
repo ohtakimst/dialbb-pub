@@ -23,6 +23,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Check if push was made by GitHub Actions
+      id: check_actor
+      run: |
+        echo "actor=${{ github.actor }}"
+        if [[ "${{ github.actor }}" == "github-actions" ]]; then
+          echo "Exiting because the push was made by GitHub Actions"
+          exit 0
+        fi
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
