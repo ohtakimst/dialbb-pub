@@ -57,4 +57,4 @@ jobs:
         git status
         git add .
         git commit -m "Commit the sphinx documentation build html"
-        git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" origin HEAD:$BRANCH
+        git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" $BRANCH:$BRANCH
