@@ -39,14 +39,14 @@ jobs:
         echo "CHANGES=$CHANGES" >> $GITHUB_ENV
 
     - name: Build Sphinx documentation for Japanese
-      if: startsWith(env.CHANGES, 'docs/document-ja/source/')
+      if: contains(env.CHANGES, 'docs/document-ja/source/')
       run: |
           cd docs/document-ja
           pip install -r requirements.txt
           make html
 
     - name: Build Sphinx documentation for English
-      if: startsWith(env.CHANGES, 'docs/document-en/source/')
+      if: contains(env.CHANGES, 'docs/document-en/source/')
       run: |
           cd docs/document-en
           pip install -r requirements.txt
