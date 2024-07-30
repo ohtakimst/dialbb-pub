@@ -40,8 +40,13 @@ jobs:
         cd docs/document-ja/
         make html
         echo "Build English."
-        cd docs/document-en/
+        cd ../../docs/document-en/
         make html
+
+    - name: Confirmation git status
+      run: |
+        git branch
+        git diff --name-only
 
     - name: Deploy documentation to branch
       if: github.ref == 'refs/heads/$BRANCH'  # デプロイを行うブランチを指定
