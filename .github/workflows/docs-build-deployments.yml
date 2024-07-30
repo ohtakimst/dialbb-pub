@@ -36,35 +36,21 @@ jobs:
         echo "Comparing with previous commit"
         CHANGES=$(git diff --name-only HEAD~)
         echo "CHANGES: $CHANGES"
-        if echo "$CHANGES" | grep '^docs/document-ja/source/'; then
-          echo "Files of Japanese."
-          echo "CHANGES_JP=true" >> $GITHUB_ENV
-        else
-          echo "CHANGES_JP=false" >> $GITHUB_ENV
-        fi
+        echo "CHANGES=$CHANGES" >> $GITHUB_ENV
 
-    - name: Run if src/ folder has changes
-      if: env.CHANGES_JP == 'true'
+    - name: Build Sphinx documentation for Japanese
+      if: startsWith(env.CHANGES, 'docs/document-ja/source/')
       run: |
-        echo "Build Japanese."
-        cd docs/document-ja
-        pip install -r requirements.txt
-        make html
-
-    - name: Build Sphinx documentation
-      run: |
-        if echo "$CHANGES" | grep '^docs/document-ja/source/'; then
-          echo "Build Japanese."
           cd docs/document-ja
           pip install -r requirements.txt
           make html
-        fi
-        if echo "$CHANGES" | grep '^docs/document-en/source/'; then
-          echo "Build English."
+
+    - name: Build Sphinx documentation for English
+      if: startsWith(env.CHANGES, 'docs/document-en/source/')
+      run: |
           cd docs/document-en
           pip install -r requirements.txt
           make html
-        fi
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
