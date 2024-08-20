@@ -1,0 +1,3 @@
+docs/.ignore merge=ours
+docs/document-ja/build/ merge=ours
+docs/document-en/build/ merge=ours
