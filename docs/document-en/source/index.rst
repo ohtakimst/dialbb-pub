@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 
-DialBB ver. 0.8 Document TEST-0820-1
+DialBB ver. 0.8 Document TEST-0820
 ================================================
 
 .. toctree::
